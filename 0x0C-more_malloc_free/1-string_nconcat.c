@@ -1,108 +1,92 @@
-#include <stdio.h>
-
-                
-
+#include "main.h"
 #include <stdlib.h>
-
-                
 
 #include "main.h"
 
-                
 
 /**
 
-                
+* string_nconcat - a function that concatenates two strings.
 
- * _strdup - duplicate to new memory space location
+*
 
-                
+* @s1: first char
 
- * @str: char
+* @s2: secound char
 
-                
+* @n: unsigned int
 
- * Return: 0
+*
 
-                
+* Return: If the function fails, it should return NULL
 
- */
+*/
 
-                
-
-char *_strdup(char *str)
-
-                
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 {
 
-                
+   unsigned int x, y, z;
 
-        char *aaa;
-
-                
-
-        int i, r = 0;
-
-                
+   char *s;
 
 
-                
+   if (s1 == NULL)
 
-        if (str == NULL)
+   {
 
-                
+       x = 0;
 
-                return (NULL);
+   }
 
-                
+   else
 
-        i = 0;
+   {
 
-                
+       for (x = 0; s1[x]; ++x)
 
-        while (str[i] != '\0')
+           ;
 
-                
+   }
 
-                i++;
+   if (s2 == NULL)
 
-                
+   {
 
+       y = 0;
 
-                
+   }
 
-        aaa = malloc(sizeof(char) * (i + 1));
+   else
 
-                
+   {
 
+       for (y = 0; s2[y]; ++y)
 
-                
+           ;
 
-        if (aaa == NULL)
+   }
 
-                
+   if (y > n)
 
-                return (NULL);
+       y = n;
 
-                
+   s = malloc(sizeof(char) * (x + y + 1));
 
+   if (s == NULL)
 
-                
+       return (NULL);
 
-        for (r = 0; str[r]; r++)
+   for (z = 0; z < x; z++)
 
-                
+       s[z] = s1[z];
 
-                aaa[r] = str[r];
+   for (z = 0; z < y; z++)
 
-                
+       s[z + x] = s2[z];
 
+   s[x + y] = '\0';
 
-                
-
-        return (aaa);
-
-                
+   return (s);
 
 }
