@@ -1,163 +1,37 @@
 #include "main.h"
-
-                
-
 #include <stdlib.h>
 
-                
-
 /**
+* _calloc - allocates memory for an array of @nmemb elements of
+* @size bytes each and returns a pointer to the allocated memory.
+* @nmemb: allocate memory for array
+* @size: allocate element of size bytes
+* Return: pointer to the allocated memory.
+*/
 
-                
-
- * str_concat - get ends of input and add together for size
-
-                
-
- * @s1: input one to concat
-
-                
-
- * @s2: input two to concat
-
-                
-
- * Return: concat of s1 and s2
-
-                
-
- */
-
-                
-
-char *str_concat(char *s1, char *s2)
-
-                
+void * _calloc(unsigned int nmemb, unsigned int size)
 
 {
 
-                
+   char *a;
 
-        char *conct;
-
-                
-
-        int i, ci;
-
-                
+   unsigned int b;
 
 
-                
+   if (nmemb == 0 || size == 0)
 
-        if (s1 == NULL)
+       return (NULL);
 
-                
+   a = malloc(nmemb * size);
 
-                s1 = "";
+   if (a == NULL)
 
-                
+       return (NULL);
 
-        if (s2 == NULL)
+   for (b = 0; b < (nmemb * size); b++)
 
-                
+       a[b] = 0;
 
-                s2 = "";
-
-                
-
-
-                
-
-                i = ci = 0;
-
-                
-
-        while (s1[i] != '\0')
-
-                
-
-                i++;
-
-                
-
-        while (s2[ci] != '\0')
-
-                
-
-                ci++;
-
-                
-
-        conct = malloc(sizeof(char) * (i + ci + 1));
-
-                
-
-
-                
-
-        if (conct == NULL)
-
-                
-
-                return (NULL);
-
-                
-
-        i = ci = 0;
-
-                
-
-        while (s1[i] != '\0')
-
-                
-
-        {
-
-                
-
-                conct[i] = s1[i];
-
-                
-
-                i++;
-
-                
-
-        }
-
-                
-
-
-                
-
-        while (s2[ci] != '\0')
-
-                
-
-        {
-
-                
-
-                conct[i] = s2[ci];
-
-                
-
-                i++, ci++;
-
-                
-
-        }
-
-                
-
-        conct[i] = '\0';
-
-                
-
-        return (conct);
-
-                
+   return (a);
 
 }
-
-
