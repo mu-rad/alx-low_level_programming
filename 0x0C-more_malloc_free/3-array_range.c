@@ -1,162 +1,53 @@
-i#include "main.h"
-
-                
-
 #include <stdlib.h>
 
-                
+#include "main.h"
+
 
 /**
 
-                
+* *array_range - creates an array of integers
 
- * str_concat - get ends of input and add together for size
+* @min: minimum range of values stored
 
-                
+* @max: maximum range of values stored and number of elements
 
- * @s1: input one to concat
+*
 
-                
+* Return: pointer to the new array
 
- * @s2: input two to concat
+*/
 
-                
-
- * Return: concat of s1 and s2
-
-                
-
- */
-
-                
-
-char *str_concat(char *s1, char *s2)
-
-                
+int *array_range(int min, int max)
 
 {
 
-                
+   int *ptr;
 
-        char *conct;
-
-                
-
-        int i, ci;
-
-                
+   int i, size;
 
 
-                
+   if (min > max)
 
-        if (s1 == NULL)
-
-                
-
-                s1 = "";
-
-                
-
-        if (s2 == NULL)
-
-                
-
-                s2 = "";
-
-                
+       return (NULL);
 
 
-                
-
-                i = ci = 0;
-
-                
-
-        while (s1[i] != '\0')
-
-                
-
-                i++;
-
-                
-
-        while (s2[ci] != '\0')
-
-                
-
-                ci++;
-
-                
-
-        conct = malloc(sizeof(char) * (i + ci + 1));
-
-                
+   size = max - min + 1;
 
 
-                
-
-        if (conct == NULL)
-
-                
-
-                return (NULL);
-
-                
-
-        i = ci = 0;
-
-                
-
-        while (s1[i] != '\0')
-
-                
-
-        {
-
-                
-
-                conct[i] = s1[i];
-
-                
-
-                i++;
-
-                
-
-        }
-
-                
+   ptr = malloc(sizeof(int) * size);
 
 
-                
+   if (ptr == NULL)
 
-        while (s2[ci] != '\0')
+       return (NULL);
 
-                
 
-        {
+   for (i = 0; min <= max; i++)
 
-                
+       ptr[i] = min++;
 
-                conct[i] = s2[ci];
 
-                
-
-                i++, ci++;
-
-                
-
-        }
-
-                
-
-        conct[i] = '\0';
-
-                
-
-        return (conct);
-
-                
+   return (ptr);
 
 }
 
